@@ -1,0 +1,61 @@
+const Newsletter = () => {
+  return (
+    <div id="newsletter" className="section bg-[#E4E7ED] py-16">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col items-center">
+          <div className="newsletter text-center">
+            <p className="text-[#2B2D42] text-lg mb-4">
+              Sign Up for the <strong>NEWSLETTER</strong>
+            </p>
+            <form className="flex justify-center mb-6">
+              <input
+                className="input w-96 h-10 px-4 border border-[#E4E7ED] bg-white outline-none"
+                type="email"
+                placeholder="Enter Your Email"
+              />
+              <button className="newsletter-btn bg-[#D10024] text-white px-6 hover:opacity-90 transition-opacity uppercase font-bold">
+                <i className="fa fa-envelope mr-2"></i> Subscribe
+              </button>
+            </form>
+            <ul className="newsletter-follow flex justify-center gap-2">
+              <li>
+                <a
+                  href="#"
+                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#D10024] hover:border-[#D10024] hover:text-white transition-colors"
+                >
+                  <i className="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#D10024] hover:border-[#D10024] hover:text-white transition-colors"
+                >
+                  <i className="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#D10024] hover:border-[#D10024] hover:text-white transition-colors"
+                >
+                  <i className="fa fa-instagram"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#D10024] hover:border-[#D10024] hover:text-white transition-colors"
+                >
+                  <i className="fa fa-pinterest"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Newsletter;
