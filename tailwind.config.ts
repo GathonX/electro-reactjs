@@ -197,8 +197,8 @@ export default {
             // 🔥 GRADIENTS SIGNATURE PIXELRISE (Avec intégration du noir)
             backgroundImage: {
                 // Gradients CTA (Conversion)
-                'gradient-cta': 'linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ef4444 100%)',
-                'gradient-cta-hover': 'linear-gradient(135deg, #d97706 0%, #ea580c 50%, #dc2626 100%)',
+                'gradient-cta': 'linear-gradient(135deg, #f59e0b 0%, #f97316 45%, #2563eb 100%)',
+                'gradient-cta-hover': 'linear-gradient(135deg, #d97706 0%, #ea580c 45%, #1d4ed8 100%)',
                 
                 // Gradient Business (Premium)
                 'gradient-business': 'linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #4f46e5 100%)',

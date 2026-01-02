@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaPinterest } from 'react-icons/fa'
 
 const Newsletter = () => {
   return (
-    <div id="newsletter" className="section bg-[#E4E7ED] py-16">
+    <div id="newsletter" className="section bg-gradient-to-r from-[#f8fafc] via-[#eff6ff] to-[#e0e7ff] py-16">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center">
           <div className="newsletter text-center">
@@ -12,11 +12,11 @@ const Newsletter = () => {
             </p>
             <form className="flex justify-center mb-6">
               <input
-                className="input w-96 h-10 px-4 border border-[#E4E7ED] bg-white outline-none"
+                className="input w-96 h-10 px-4 border border-[#E4E7ED] bg-white outline-none rounded-l-full"
                 type="email"
                 placeholder="Enter Your Email"
               />
-              <button className="newsletter-btn bg-[#D10024] text-white px-6 hover:opacity-90 transition-opacity uppercase font-bold inline-flex items-center gap-2">
+              <button className="newsletter-btn bg-gradient-to-r from-[#f59e0b] via-[#f97316] to-[#2563eb] text-white px-6 rounded-r-full hover:opacity-90 transition-opacity uppercase font-bold inline-flex items-center gap-2">
                 <Mail className="w-4 h-4" /> Subscribe
               </button>
             </form>
@@ -24,7 +24,7 @@ const Newsletter = () => {
               <li>
                 <a
                   href="#"
-                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#D10024] hover:border-[#D10024] hover:text-white transition-colors"
+                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#2563eb] hover:border-[#2563eb] hover:text-white transition-colors"
                 >
                   <FaFacebook className="w-4 h-4" />
                 </a>
@@ -32,7 +32,7 @@ const Newsletter = () => {
               <li>
                 <a
                   href="#"
-                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#D10024] hover:border-[#D10024] hover:text-white transition-colors"
+                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#2563eb] hover:border-[#2563eb] hover:text-white transition-colors"
                 >
                   <FaTwitter className="w-4 h-4" />
                 </a>
@@ -40,7 +40,7 @@ const Newsletter = () => {
               <li>
                 <a
                   href="#"
-                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#D10024] hover:border-[#D10024] hover:text-white transition-colors"
+                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#2563eb] hover:border-[#2563eb] hover:text-white transition-colors"
                 >
                   <FaInstagram className="w-4 h-4" />
                 </a>
@@ -48,7 +48,7 @@ const Newsletter = () => {
               <li>
                 <a
                   href="#"
-                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#D10024] hover:border-[#D10024] hover:text-white transition-colors"
+                  className="w-10 h-10 flex items-center justify-center border-2 border-[#B9BABC] rounded-full text-[#2B2D42] hover:bg-[#2563eb] hover:border-[#2563eb] hover:text-white transition-colors"
                 >
                   <FaPinterest className="w-4 h-4" />
                 </a>

@@ -1,46 +1,36 @@
 import { Link } from 'react-router-dom';
+import { Menu } from 'lucide-react';
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/hot-deals', label: 'Hot Deals' },
+  { href: '/categories', label: 'Categories' },
+  { href: '/laptops', label: 'Laptops' },
+  { href: '/smartphones', label: 'Smartphones' },
+  { href: '/cameras', label: 'Cameras' },
+  { href: '/accessories', label: 'Accessories' },
+];
 
 const Navigation = () => {
   return (
-    <nav id="navigation" className="bg-[#D10024]">
+    <nav id="navigation" className="bg-gradient-to-r from-[#0f172a] via-[#1d4ed8] to-[#2563eb]">
       <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between py-4 text-white lg:hidden">
+          <span className="text-sm font-semibold tracking-[0.3em] uppercase text-white/80">Menu</span>
+          <Menu className="h-6 w-6" />
+        </div>
         <div id="responsive-nav">
-          <ul className="main-nav flex items-center justify-start py-4 space-x-8">
-            <li className="active">
-              <Link to="/" className="text-white uppercase font-bold hover:opacity-80 transition-opacity">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/hot-deals" className="text-white uppercase font-bold hover:opacity-80 transition-opacity">
-                Hot Deals
-              </Link>
-            </li>
-            <li>
-              <Link to="/categories" className="text-white uppercase font-bold hover:opacity-80 transition-opacity">
-                Categories
-              </Link>
-            </li>
-            <li>
-              <Link to="/laptops" className="text-white uppercase font-bold hover:opacity-80 transition-opacity">
-                Laptops
-              </Link>
-            </li>
-            <li>
-              <Link to="/smartphones" className="text-white uppercase font-bold hover:opacity-80 transition-opacity">
-                Smartphones
-              </Link>
-            </li>
-            <li>
-              <Link to="/cameras" className="text-white uppercase font-bold hover:opacity-80 transition-opacity">
-                Cameras
-              </Link>
-            </li>
-            <li>
-              <Link to="/accessories" className="text-white uppercase font-bold hover:opacity-80 transition-opacity">
-                Accessories
-              </Link>
-            </li>
+          <ul className="main-nav no-scrollbar flex flex-wrap items-center gap-4 overflow-x-auto py-4 text-sm font-semibold uppercase tracking-wide text-white lg:justify-start">
+            {links.map(link => (
+              <li key={link.label} className={link.href === '/' ? 'active' : undefined}>
+                <Link
+                  to={link.href}
+                  className="inline-flex min-w-[120px] items-center justify-center rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:bg-white/10"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

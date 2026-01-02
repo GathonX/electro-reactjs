@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import ProductCard from '../components/ProductCard';
@@ -22,7 +22,7 @@ const Home = () => {
   const sliderSettings = {
     dots: false,
     infinite: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
@@ -48,16 +48,33 @@ const Home = () => {
     ]
   };
 
+  useEffect(() => {
+    const refs = [slider1Ref, slider2Ref, slider3Ref];
+    const timers = refs.map((ref, index) =>
+      setInterval(() => {
+        ref.current?.slickNext();
+      }, 6000 + index * 300)
+    );
+
+    return () => {
+      timers.forEach(timer => clearInterval(timer));
+    };
+  }, []);
+
   const widgetSliderSettings = {
     dots: false,
     infinite: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: false,
+    pauseOnFocus: false,
     arrows: true,
     vertical: false,
-    adaptiveHeight: false,
+    verticalSwiping: false,
+    adaptiveHeight: true,
   };
 
   return (
@@ -120,8 +137,8 @@ const Home = () => {
                   onClick={() => setActiveTab(cat)}
                   className={`px-4 py-2 uppercase font-medium transition ${
                     activeTab === cat
-                      ? 'text-[#D10024] border-b-2 border-[#D10024]'
-                      : 'text-[#2B2D42] hover:text-[#D10024]'
+                      ? 'text-[#2563eb] border-b-2 border-[#2563eb]'
+                      : 'text-[#2B2D42] hover:text-[#2563eb]'
                   }`}
                 >
                   {cat}
@@ -142,9 +159,9 @@ const Home = () => {
 
       {/* Hot Deal Section */}
       <div className="relative py-24 bg-cover bg-center" style={{ backgroundImage: 'url(/img/hotdeal.png)' }}>
-        <div className="absolute inset-0 bg-[#D10024]/90" />
+        <div className="absolute inset-0 from-[#0f172a]/95 via-[#1d4ed8]/80 to-[#2563eb]/80" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center text-white">
+          <div className="text-center text-gray-70">
             <div className="flex justify-center gap-6 mb-8">
               <div className="text-center">
                 <h3 className="text-5xl font-bold">02</h3>
@@ -166,7 +183,7 @@ const Home = () => {
 
             <h2 className="text-4xl font-bold mb-2 uppercase">Hot Deal This Week</h2>
             <p className="text-xl mb-4">New Collection Up to 50% OFF</p>
-            <button className="bg-white text-[#D10024] px-8 py-3 rounded-full uppercase font-bold hover:bg-[#2B2D42] hover:text-white transition">
+            <button className="bg-white text-[#2563eb] px-8 py-3 rounded-full uppercase font-bold hover:bg-[#0f172a] hover:text-white transition">
               Shop Now
             </button>
           </div>
@@ -185,8 +202,8 @@ const Home = () => {
                   onClick={() => setTopSellingTab(cat)}
                   className={`px-4 py-2 uppercase font-medium transition ${
                     topSellingTab === cat
-                      ? 'text-[#D10024] border-b-2 border-[#D10024]'
-                      : 'text-[#2B2D42] hover:text-[#D10024]'
+                      ? 'text-[#2563eb] border-b-2 border-[#2563eb]'
+                      : 'text-[#2B2D42] hover:text-[#2563eb]'
                   }`}
                 >
                   {cat}

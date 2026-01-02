@@ -1,7 +1,7 @@
 import type { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import { Heart, Repeat, Eye, ShoppingCart } from 'lucide-react';
+import { Heart, Repeat, Eye } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -10,107 +10,114 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart, addToWishlist } = useCart();
 
-  const renderStars = () => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(i);
-    }
-    return stars;
-  };
-
   return (
-    <div className="product group relative mx-0 my-[15px] shadow-[0px_0px_0px_0px_#E4E7ED,0px_0px_0px_1px_#E4E7ED] transition-all duration-200 hover:shadow-[0px_0px_6px_0px_#E4E7ED,0px_0px_0px_2px_#D10024]">
-      {/* Product Image */}
-      <div className="product-img relative">
-        <img src={product.image} alt={product.name} className="w-full" />
-        {/* Product Label */}
+    <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/30 bg-gradient-to-b from-white via-white/95 to-slate-50 p-1 shadow-lg shadow-slate-200/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-premium">
+      <div className="relative overflow-hidden rounded-[26px] bg-gradient-to-br from-[#0f172a] via-[#1d4ed8] to-[#7c3aed] p-6">
+        <div className="absolute inset-0 opacity-30 blur-3xl" aria-hidden="true" />
+        <img
+          src={product.image}
+          alt={product.name}
+          className="relative mx-auto h-48 w-full object-contain transition duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+
         {(product.discount || product.oldPrice) && (
-          <div className="product-label absolute top-[15px] right-[15px]">
+          <div className="absolute top-4 left-4 flex flex-wrap gap-2">
             {product.discount && (
-              <span className="sale border-2 border-[#D10024] bg-white text-[#D10024] px-[10px] py-[2px] text-xs inline-block">
+              <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#b45309] shadow-sm">
                 -{product.discount}%
               </span>
             )}
             {product.oldPrice && (
-              <span className="new border-2 border-[#D10024] bg-[#D10024] text-white px-[10px] py-[2px] text-xs inline-block ml-1">
-                NEW
+              <span className="rounded-full border border-white/60 bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-inner backdrop-blur">
+                Nouveauté
               </span>
             )}
           </div>
         )}
+
+        <div className="absolute top-4 right-4 flex flex-col gap-3">
+          <button
+            className="rounded-full bg-white/80 p-2 text-slate-600 transition hover:bg-white hover:text-[#2563eb]"
+            onClick={() => addToWishlist(product)}
+            aria-label="Ajouter à la wishlist"
+          >
+            <Heart className="h-4 w-4" />
+          </button>
+          <button
+            className="rounded-full bg-white/80 p-2 text-slate-600 transition hover:bg-white hover:text-[#2563eb]"
+            aria-label="Comparer le produit"
+          >
+            <Repeat className="h-4 w-4" />
+          </button>
+          <button
+            className="rounded-full bg-white/80 p-2 text-slate-600 transition hover:bg-white hover:text-[#2563eb]"
+            aria-label="Vue rapide du produit"
+          >
+            <Eye className="h-4 w-4" />
+          </button>
+        </div>
       </div>
 
-      {/* Product Body */}
-      <div className="product-body relative px-[15px] py-[15px] bg-white text-center z-20">
-        <p className="product-category uppercase text-xs text-[#8D99AE] mb-0">Category</p>
-        <h3 className="product-name uppercase text-sm my-[10px]">
-          <Link to={`/product/${product.id}`} className="font-bold text-[#2B2D42] hover:text-[#D10024] transition-colors duration-200">
-            {product.name}
-          </Link>
-        </h3>
-        <h4 className="product-price text-[#D10024] text-lg">
-          ${product.price.toFixed(2)}{' '}
-          {product.oldPrice && (
-            <del className="product-old-price text-[70%] font-normal text-[#8D99AE]">
-              ${product.oldPrice.toFixed(2)}
-            </del>
-          )}
-        </h4>
-
-        {/* Product Rating */}
-        <div className="product-rating relative my-[15px] mx-0 mb-[10px] h-[20px] after:content-[''] after:absolute after:top-1/2 after:left-0 after:right-0 after:-translate-y-1/2 after:h-[1px] after:bg-[#E4E7ED]">
-          {renderStars().map((index) => (
-            <svg
-              key={index}
-              className={`relative w-[14px] -mr-[4px] bg-white z-10 inline-block ${
-                index < (product.rating || 0) ? 'text-[#ef233c]' : 'text-[#E4E7ED]'
-              }`}
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
+      <div className="flex flex-1 flex-col gap-4 p-6">
+        <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-slate-400">
+          <span>{product.category}</span>
+          <span className="flex items-center gap-1 text-[#f59e0b]">
+            {product.rating?.toFixed(1) ?? '4.8'}
+            <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
-          ))}
+          </span>
         </div>
 
-        {/* Product Buttons */}
-        <div className="product-btns inline-block">
-          <button
-            className="add-to-wishlist group/btn relative w-[40px] h-[40px] leading-[40px] bg-transparent border-none transition-all duration-200 hover:bg-[#E4E7ED] hover:text-[#D10024] hover:rounded-full"
-            onClick={() => addToWishlist(product)}
+        <div>
+          <Link
+            to={`/product/${product.id}`}
+            className="text-lg font-semibold text-[#0f172a] transition hover:text-[#2563eb]"
           >
-            <Heart className="w-4 h-4 inline-block" />
-            <span className="tooltipp absolute bottom-full left-1/2 -translate-x-1/2 translate-y-[-15px] w-[150px] px-[10px] py-[10px] text-xs leading-[10px] bg-[#1e1f29] text-white uppercase z-10 opacity-0 invisible transition-all duration-200 group-hover/btn:opacity-100 group-hover/btn:visible group-hover/btn:-translate-x-1/2 group-hover/btn:translate-y-[-5px]">
-              add to wishlist
+            {product.name}
+          </Link>
+          <p className="mt-2 text-sm text-[#64748b]">
+            Matériel certifié PixelRise™ avec livraison express, support technique et packaging premium inclus.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-baseline gap-3">
+          <span className="text-2xl font-bold text-[#2563eb]">${product.price.toFixed(2)}</span>
+          {product.oldPrice && (
+            <del className="text-sm text-[#94a3b8]">${product.oldPrice.toFixed(2)}</del>
+          )}
+          {product.discount && (
+            <span className="rounded-full bg-[#fef3c7] px-3 py-1 text-xs font-semibold text-[#b45309]">
+              Économie garantie
             </span>
+          )}
+        </div>
+
+        <div className="flex flex-wrap gap-2 text-xs text-[#64748b]">
+          <span className="rounded-full bg-[#f8fafc] px-3 py-1">Stock vérifié</span>
+          <span className="rounded-full bg-[#f8fafc] px-3 py-1">Livraison 48h</span>
+          <span className="rounded-full bg-[#f8fafc] px-3 py-1">Garantie 2 ans</span>
+        </div>
+
+        <div className="mt-auto flex items-center gap-3 pt-4">
+          <button
+            className="flex-1 rounded-full bg-gradient-to-r from-[#f59e0b] via-[#f97316] to-[#2563eb] px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-cta transition hover:shadow-lg"
+            onClick={() => addToCart(product)}
+          >
+            Ajouter au panier
           </button>
-          <button className="add-to-compare group/btn relative w-[40px] h-[40px] leading-[40px] bg-transparent border-none transition-all duration-200 hover:bg-[#E4E7ED] hover:text-[#D10024] hover:rounded-full">
-            <Repeat className="w-4 h-4 inline-block" />
-            <span className="tooltipp absolute bottom-full left-1/2 -translate-x-1/2 translate-y-[-15px] w-[150px] px-[10px] py-[10px] text-xs leading-[10px] bg-[#1e1f29] text-white uppercase z-10 opacity-0 invisible transition-all duration-200 group-hover/btn:opacity-100 group-hover/btn:visible group-hover/btn:-translate-x-1/2 group-hover/btn:translate-y-[-5px]">
-              add to compare
-            </span>
-          </button>
-          <button className="quick-view group/btn relative w-[40px] h-[40px] leading-[40px] bg-transparent border-none transition-all duration-200 hover:bg-[#E4E7ED] hover:text-[#D10024] hover:rounded-full">
-            <Eye className="w-4 h-4 inline-block" />
-            <span className="tooltipp absolute bottom-full left-1/2 -translate-x-1/2 translate-y-[-15px] w-[150px] px-[10px] py-[10px] text-xs leading-[10px] bg-[#1e1f29] text-white uppercase z-10 opacity-0 invisible transition-all duration-200 group-hover/btn:opacity-100 group-hover/btn:visible group-hover/btn:-translate-x-1/2 group-hover/btn:translate-y-[-5px]">
-              quick view
-            </span>
-          </button>
+          <Link
+            to={`/product/${product.id}`}
+            className="rounded-full border border-slate-200 px-4 py-3 text-sm font-semibold text-[#2563eb] transition hover:border-[#2563eb]"
+          >
+            Fiche
+          </Link>
         </div>
       </div>
-
-      {/* Add to Cart - Slide down on hover */}
-      <div className="add-to-cart absolute left-[1px] right-[1px] bottom-[1px] px-[15px] py-[15px] bg-[#1e1f29] text-center translate-y-0 transition-transform duration-200 z-[2] group-hover:translate-y-[100%]">
-        <button
-          className="add-to-cart-btn group/cart relative h-[40px] px-[30px] bg-[#ef233c] text-white border-2 border-transparent rounded-[40px] uppercase font-bold transition-all duration-200 hover:bg-white hover:text-[#D10024] hover:border-[#D10024] hover:pl-[50px]"
-          onClick={() => addToCart(product)}
-        >
-          <ShoppingCart className="w-[40px] h-[40px] absolute left-0 top-0 p-2 text-[#D10024] opacity-0 invisible transition-all duration-200 group-hover/cart:opacity-100 group-hover/cart:visible" />
-          add to cart
-        </button>
-      </div>
-    </div>
+    </article>
   );
 };
 
 export default ProductCard;
+
