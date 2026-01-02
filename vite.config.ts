@@ -84,16 +84,15 @@ export default defineConfig(({ mode }) => {
   },
   server: {
     host: "0.0.0.0",
-    port: 8080,
-    strictPort: true,
+    port: 5173,
+    strictPort: false,
     fs: {
       strict: false,
     },
     historyApiFallback: true,
     cors: true,
     allowedHosts: ['dev.pixel-rise.com', 'app.pixel-rise.com', 'localhost'],
-    hmr: false, // DÉSACTIVÉ EN PRODUCTION - Évite rechargements automatiques
-    watch: null, // DÉSACTIVER COMPLÈTEMENT le watch en production
+    hmr: true,
     middlewareMode: false,
     configureServer(server: ViteDevServer) {
       server.middlewares.use((req: IncomingMessage, res: ServerResponse, next: () => void) => {

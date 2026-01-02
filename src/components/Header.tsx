@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { Phone, Mail, MapPin, DollarSign, User, Heart, ShoppingCart, Menu, X, ArrowRight } from 'lucide-react';
 
 const Header = () => {
   const { cart, wishlist, getCartTotal, getCartCount, removeFromCart } = useCart();
@@ -14,30 +15,30 @@ const Header = () => {
           <div className="flex justify-between">
             <ul className="flex space-x-6 text-white text-sm">
               <li>
-                <a href="#" className="hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-phone"></i> +021-95-51-84
+                <a href="#" className="hover:text-[#D10024] transition-colors flex items-center gap-1">
+                  <Phone className="w-3 h-3" /> +021-95-51-84
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-envelope-o"></i> email@email.com
+                <a href="#" className="hover:text-[#D10024] transition-colors flex items-center gap-1">
+                  <Mail className="w-3 h-3" /> email@email.com
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-map-marker"></i> 1734 Stonecoal Road
+                <a href="#" className="hover:text-[#D10024] transition-colors flex items-center gap-1">
+                  <MapPin className="w-3 h-3" /> 1734 Stonecoal Road
                 </a>
               </li>
             </ul>
             <ul className="flex space-x-6 text-white text-sm">
               <li>
-                <a href="#" className="hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-dollar"></i> USD
+                <a href="#" className="hover:text-[#D10024] transition-colors flex items-center gap-1">
+                  <DollarSign className="w-3 h-3" /> USD
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-user-o"></i> My Account
+                <a href="#" className="hover:text-[#D10024] transition-colors flex items-center gap-1">
+                  <User className="w-3 h-3" /> My Account
                 </a>
               </li>
             </ul>
@@ -88,7 +89,7 @@ const Header = () => {
                 {/* Wishlist */}
                 <div>
                   <Link to="/wishlist" className="relative inline-block text-center">
-                    <i className="fa fa-heart-o text-2xl text-[#2B2D42] hover:text-[#D10024] transition-colors"></i>
+                    <Heart className="w-6 h-6 mx-auto text-[#2B2D42] hover:text-[#D10024] transition-colors" />
                     <div className="block mt-1">
                       <span className="text-xs text-[#2B2D42] uppercase font-medium">Your Wishlist</span>
                       {wishlist.length > 0 && (
@@ -107,7 +108,7 @@ const Header = () => {
                     className="dropdown-toggle relative inline-block text-center"
                     onClick={() => setIsCartOpen(!isCartOpen)}
                   >
-                    <i className="fa fa-shopping-cart text-2xl text-[#2B2D42] hover:text-[#D10024] transition-colors"></i>
+                    <ShoppingCart className="w-6 h-6 mx-auto text-[#2B2D42] hover:text-[#D10024] transition-colors" />
                     <div className="block mt-1">
                       <span className="text-xs text-[#2B2D42] uppercase font-medium">Your Cart</span>
                       {getCartCount() > 0 && (
@@ -141,7 +142,7 @@ const Header = () => {
                                 className="delete text-[#8D99AE] hover:text-[#D10024] transition-colors"
                                 onClick={() => removeFromCart(item.id)}
                               >
-                                <i className="fa fa-close"></i>
+                                <X className="w-4 h-4" />
                               </button>
                             </div>
                           ))
@@ -162,9 +163,9 @@ const Header = () => {
                             </Link>
                             <Link
                               to="/checkout"
-                              className="flex-1 text-center py-2.5 bg-[#D10024] text-white uppercase font-bold hover:opacity-90 transition-opacity"
+                              className="flex-1 text-center py-2.5 bg-[#D10024] text-white uppercase font-bold hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-1"
                             >
-                              Checkout <i className="fa fa-arrow-circle-right"></i>
+                              Checkout <ArrowRight className="w-4 h-4" />
                             </Link>
                           </div>
                         </>
@@ -177,7 +178,7 @@ const Header = () => {
                 {/* Menu Toggle */}
                 <div className="menu-toggle lg:hidden">
                   <a href="#" className="relative inline-block text-center">
-                    <i className="fa fa-bars text-2xl text-[#2B2D42]"></i>
+                    <Menu className="w-6 h-6 mx-auto text-[#2B2D42]" />
                     <div className="block mt-1">
                       <span className="text-xs text-[#2B2D42] uppercase font-medium">Menu</span>
                     </div>

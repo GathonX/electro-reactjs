@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { MapPin, Phone, Mail, Heart } from 'lucide-react';
+import { FaCcVisa, FaCreditCard, FaCcPaypal, FaCcMastercard, FaCcDiscover, FaCcAmex } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -15,18 +17,18 @@ const Footer = () => {
               </p>
               <ul className="footer-links space-y-2">
                 <li>
-                  <a href="#" className="text-[#8D99AE] hover:text-[#D10024] transition-colors">
-                    <i className="fa fa-map-marker mr-2"></i>1734 Stonecoal Road
+                  <a href="#" className="text-[#8D99AE] hover:text-[#D10024] transition-colors flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />1734 Stonecoal Road
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#8D99AE] hover:text-[#D10024] transition-colors">
-                    <i className="fa fa-phone mr-2"></i>+021-95-51-84
+                  <a href="#" className="text-[#8D99AE] hover:text-[#D10024] transition-colors flex items-center gap-2">
+                    <Phone className="w-4 h-4" />+021-95-51-84
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#8D99AE] hover:text-[#D10024] transition-colors">
-                    <i className="fa fa-envelope-o mr-2"></i>email@email.com
+                  <a href="#" className="text-[#8D99AE] hover:text-[#D10024] transition-colors flex items-center gap-2">
+                    <Mail className="w-4 h-4" />email@email.com
                   </a>
                 </li>
               </ul>
@@ -138,38 +140,38 @@ const Footer = () => {
             <ul className="footer-payments flex justify-center gap-4 mb-4">
               <li>
                 <a href="#" className="text-white text-2xl hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-cc-visa"></i>
+                  <FaCcVisa />
                 </a>
               </li>
               <li>
                 <a href="#" className="text-white text-2xl hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-credit-card"></i>
+                  <FaCreditCard />
                 </a>
               </li>
               <li>
                 <a href="#" className="text-white text-2xl hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-cc-paypal"></i>
+                  <FaCcPaypal />
                 </a>
               </li>
               <li>
                 <a href="#" className="text-white text-2xl hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-cc-mastercard"></i>
+                  <FaCcMastercard />
                 </a>
               </li>
               <li>
                 <a href="#" className="text-white text-2xl hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-cc-discover"></i>
+                  <FaCcDiscover />
                 </a>
               </li>
               <li>
                 <a href="#" className="text-white text-2xl hover:text-[#D10024] transition-colors">
-                  <i className="fa fa-cc-amex"></i>
+                  <FaCcAmex />
                 </a>
               </li>
             </ul>
             <span className="copyright text-[#8D99AE] text-sm">
               Copyright &copy;{new Date().getFullYear()} All rights reserved | This template is made with{' '}
-              <i className="fa fa-heart-o text-[#D10024]" aria-hidden="true"></i> by{' '}
+              <Heart className="w-3 h-3 inline-block text-[#D10024]" aria-hidden="true" /> by{' '}
               <a href="https://colorlib.com" target="_blank" className="text-[#D10024] hover:underline">
                 Colorlib
               </a>

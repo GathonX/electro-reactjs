@@ -238,3 +238,39 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, label 
     box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
   }
 }
+
+/* Slick Carousel Custom Arrows */
+.products-slick-nav {
+  position: relative;
+  z-index: 10;
+}
+
+.products-slick-nav .slick-prev,
+.products-slick-nav .slick-next {
+  position: relative !important;
+  transform: none;
+  width: 20px;
+  height: 20px;
+  display: inline-block !important;
+  margin: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 0;
+  line-height: 0;
+  padding: 0;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.products-slick-nav .slick-prev:before,
+.products-slick-nav .slick-next:before {
+  font-family: 'slick';
+  font-size: 14px;
+  line-height: 1;
+  color: #2B2D42;
+  opacity: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
